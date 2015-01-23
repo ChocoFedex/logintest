@@ -1,5 +1,7 @@
 package ar.com.proautomation;
 
+import java.util.List;
+
 import org.junit.Before;
 
 import junit.framework.Test;
@@ -25,23 +27,22 @@ public class TestFunctionalTestSuite extends TestCase {
     }
     
     public void testAddTest() {
-        int currentTests = this.testSuite.getContainedTests();
-
-        assertEquals(1, currentTests);
+    	List<String> currentTests = this.testSuite.getContainedTestNames();
+        assertEquals("successful login", currentTests.get(0));
     }
     
     public void testAddTestEmptyName() {
         this.testSuite.addTest(null);
-        int currentTests = this.testSuite.getContainedTests();
+        List<String> currentTests = this.testSuite.getContainedTestNames();
 
-        assertEquals(1, currentTests);
+        assertEquals(1, currentTests.size());
     }
     
     public void testRemoveTest() {
-        this.testSuite.removeTest();
-        int currentTests = this.testSuite.getContainedTests();
+        this.testSuite.removeTest("successful login");
+        List<String> currentTests = this.testSuite.getContainedTestNames();
 
-        assertEquals(0, currentTests);
+        assertEquals(0, currentTests.size());
     }
 
 }

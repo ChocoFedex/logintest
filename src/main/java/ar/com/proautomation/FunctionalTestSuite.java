@@ -1,20 +1,23 @@
 package ar.com.proautomation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FunctionalTestSuite {
 
-	private int containedTests = 0;
+	private List<String> testCases = new ArrayList<String>();
 	
 	public void addTest(String name) {
 		if (name != null) {
-			this.containedTests += 1;
+			this.testCases.add(name);
 		}
 	}
 	
-	public void removeTest() {
-		this.containedTests -= 1;
+	public void removeTest(String name) {
+		this.testCases.remove(name);
 	}
 	
-	public int getContainedTests() {
-		return this.containedTests;
+	public List<String> getContainedTestNames() {
+		return this.testCases;
 	}
 }
